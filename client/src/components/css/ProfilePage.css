@@ -1,0 +1,29 @@
+.profile-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.publications-section {
+    background-color: #1B1C1D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 68%;
+    margin: 10px auto;
+    padding: 20px;
+    border-radius: 16px;
+}
+
+.loading-screen {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-screen__spinner {
+    width: 40px;
+    margin-top: 10px;
+}

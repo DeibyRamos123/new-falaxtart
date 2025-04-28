@@ -1,0 +1,14 @@
+.info-list {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 43%;
+    height: 126px;
+    gap: 40px;
+}
+
+.info-list__element {
+    background-color: #5D3FD3;
+    padding: 20px;
+    border-radius: 16px;
+}

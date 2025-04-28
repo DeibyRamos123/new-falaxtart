@@ -1,0 +1,51 @@
+.profile-menu{
+    position: relative;
+}
+.profile-menu__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.profile-menu__links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    background-color: #1D1C1C;
+    width: 155px;
+    height: 0;
+    overflow: hidden;
+    top: 58px;
+    color: #fff;
+    right: 0;
+    gap: 5px;
+    transition: all ease .2s;
+}
+
+.profile-menu__links--active {
+    height: 150px;
+}
+
+.profile-menu__links__element {
+    text-decoration: none;
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    padding: 5px;
+    transition: background ease .2s;
+}
+
+.profile-menu__links__element:hover {
+    background-color: #262626;
+}
+
+@media (max-width: 400px) {
+    .publications-section {
+        width: 100%;
+        flex-direction: column;
+    }
+}

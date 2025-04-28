@@ -1,0 +1,71 @@
+.header__link {
+    text-decoration: none;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+    background-color: #161616;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.header__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header__title {
+    font-size: 2rem;
+    color: #fff;
+}
+
+.buttons-auth {
+    display: flex;
+    gap: 20px;
+}
+
+.buttons-auth__sign-up {
+    font-family: 'Poppins';
+    padding: 8px 40px;
+    border: none;
+    background-color:  #5D3FD3;
+    border-color: #fff;
+    font-weight: bold;
+    border-radius: 30px;
+    font-size: 1rem;
+    color: #fff;
+    cursor: pointer;
+    transition: all ease .2s;
+}
+
+.buttons-auth__login {
+    font-family: 'Poppins';
+    padding: 5px 40px;
+    border: none;
+    background-color:  transparent;
+    border: 1px solid #fff;
+    border-color: #fff;
+    font-weight: bold;
+    border-radius: 30px;
+    font-size: 1rem;
+    color: #fff;
+    cursor: pointer;
+    transition: all ease .2s;
+}
+
+.buttons-auth__login:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.buttons-auth__sign-up:hover {
+    filter: brightness(0.8);
+}

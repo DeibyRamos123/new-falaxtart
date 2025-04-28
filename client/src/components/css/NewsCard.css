@@ -1,0 +1,25 @@
+.news-card {
+    width: 90%;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    border-radius: 16px;
+    padding: 10px;
+}
+
+.news-card__text {
+    display: flex;
+    position: relative;
+    left: 20px;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.news-card__text__title {
+    font-size: 2rem;
+}
+ 
+.news-card__promocional-img {
+    height: 100%;
+    border-radius: 16px;
+}

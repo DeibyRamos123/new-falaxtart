@@ -1,0 +1,12 @@
+.news-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.works-info-section {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-left: 5%;
+}
