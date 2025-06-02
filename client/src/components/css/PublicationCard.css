@@ -52,3 +52,11 @@
 .user-information__img:hover {
     filter: brightness(0.4);
 }
+
+.publication-home__link {
+    text-decoration: none;
+}
+
+.publication-home__footer__title {
+    color: #fff;
+}

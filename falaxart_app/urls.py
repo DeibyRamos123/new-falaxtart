@@ -16,5 +16,8 @@ urlpatterns = [
     path('create-publication/', upload_publication, name="create_publication"),
     path('user-publications/<int:id>',my_publications,name='my_publications'),
     path('publication-obtain/<int:id>/', obtain_publication, name='obtain_publication'),
-    path('publications/', publications, name='publications')
+    path('publications/', publications, name='publications'),
+    path('comments/view-all-comments/', comments, name='comments'),
+    path('comments/user-comment/<int:id>', obtain_comment, name='obtain_comment'),
+    path('comments/create-comment/', create_comment, name='create_comment')
 ]

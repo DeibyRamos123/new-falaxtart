@@ -34,6 +34,7 @@ export function Home() {
           username={publication.usuario.username}
           avatar={`http://localhost:8000/${publication.usuario.avatar}`}
           usuarioId={publication.usuario.id}
+          publicationId={publication.id}
           />
         ))}
     </section>

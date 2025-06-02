@@ -34,8 +34,10 @@ export function UpdatePublication() {
                 <img src={`http://localhost:8000/${publication.content}`} alt={publication.title} className="publication-image-container__publication-img" />
             </div>
             <div className="publication-text-context">
+                    <p className='publication-title__label'> title</p>
                     <h2 className='publication-title'>{publication.title}</h2>
-                    <p>{publication.description}</p>
+                    <p className='publication-title__label'>Description </p>
+                    <p className='publication-description'>{publication.description}</p>
             </div>
         </div>
         <section className="publication-info-section">
