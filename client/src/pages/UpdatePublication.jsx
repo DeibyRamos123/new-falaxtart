@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { ObtainPublication } from '../api/usuarios.api';
 import '../components/css/updatePub.css'
+import '../components/css/loading.css';
+import cargando from '../assets/loading.gif';
 
 export function UpdatePublication() {
 
     const { id } = useParams();
     const [publication, setPublication] = useState([]);
-    const [userInfo, setUserInfo] = useState([])
+    const [userInfo, setUserInfo] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [sameUser, setSameUser] = useState(false);
+
+    const params = useParams();
 
 
     useEffect(() => {
@@ -17,41 +23,74 @@ export function UpdatePublication() {
                 console.log(response.data);
                 setPublication(response.data)
                 setUserInfo(response.data.usuario)
+                setLoading(false);
             } catch (error) {
                 console.error('error al realizar la peticion');
             }
         }
         renderPublication();
-    }, [])
+    }, [params.id])
+
+    useEffect(() => {
+        let currentUser = parseInt(localStorage.getItem('SessionId'));
+        let publicationUserID = parseInt(userInfo.id);
+
+        if (currentUser != publicationUserID) {
+            setSameUser(true);
+        } else {
+            setSameUser(false);
+        }
+    }, [params.id])
+
+
+    if (loading) {
+        return (
+            <div className="loading-screen">
+                <img src={cargando} className="loading-screen__spinner" alt="loading..." />
+            </div>
+        )
+    }
 
     const user_avatar = `http://localhost:8000/${userInfo.avatar}`
+    console.log(sameUser)
 
 
-  return (
-    <section className="publication-section">
-        <div className="publication">
-            <div className="publication-image-container">
-                <img src={`http://localhost:8000/${publication.content}`} alt={publication.title} className="publication-image-container__publication-img" />
-            </div>
-            <div className="publication-text-context">
+
+
+    return (
+        <section className="publication-section">
+            <div className="publication">
+                <div className="publication-image-container">
+                    <img src={`http://localhost:8000/${publication.content}`} alt={publication.title} className="publication-image-container__publication-img" />
+                </div>
+                <div className="publication-text-context">
                     <p className='publication-title__label'> title</p>
                     <h2 className='publication-title'>{publication.title}</h2>
                     <p className='publication-title__label'>Description </p>
                     <p className='publication-description'>{publication.description}</p>
-            </div>
-        </div>
-        <section className="publication-info-section">
-            <div className="publication-user">
-                <div className="publication-user-section__avatar">
-                    <img src={user_avatar} alt="" className="user__avatar" />
-                </div>
-                <div className="publication-user__names">
-                    <p className="user-first-name">{userInfo.first_name}</p>
-                    <p className="user-username">{`@${userInfo.username}`}</p>
+                    {sameUser ? (
+                        <button className="profile-info__user-edit-profile-btn"> q </button>
+                    ) : (
+                        <button className="profile-info__user-edit-profile-btn" onClick={onClick}>Editar Publicacion</button>
+                    )
+                    }
+                    
                 </div>
             </div>
+            <section className="publication-info-section">
+                <div className="publication-user">
+                    <div className="publication-user-section__avatar">
+                        <Link to={`/profile/${userInfo.id}`}>
+                            <img src={user_avatar} alt="" className="user__avatar" />
+                        </Link>
+                    </div>
+                    <div className="publication-user__names">
+                        <p className="user-first-name">{userInfo.first_name}</p>
+                        <p className="user-username">{`@${userInfo.username}`}</p>
+                    </div>
+                </div>
+            </section>
         </section>
-    </section>
-  )
+    )
 }
 

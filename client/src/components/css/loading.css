@@ -1,0 +1,11 @@
+.loading-screen {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-screen__spinner {
+    width: 40px;
+    margin-top: 10px;
+}
