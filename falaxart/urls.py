@@ -5,7 +5,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('usuarios/',include('falaxart_app.urls'))
+    path('falaxart/api/users/v1/',include('falaxart_app.views.users.urls')),
+    path('falaxart/api/publications/v1/', include('falaxart_app.views.publications.urls')),
+    path('falaxart/api/comments/v1/', include('falaxart_app.views.comments.urls'))
 ]
 
 if settings.DEBUG:

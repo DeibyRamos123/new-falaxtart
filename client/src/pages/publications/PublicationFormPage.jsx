@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import '../components/css/PublicationForm.css'
+import '../../styles/PublicationForm.css'
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { homeUsuario, uploadPublication } from '../api/usuarios.api';
+import { homeUsuario, uploadPublication } from '../../services/usuarios.api';
 
 export function PublicationFormPage() {
   const defaultImg = 'https://i.pinimg.com/736x/13/93/83/139383bbb0d7e611ce57391907c37f7b.jpg';

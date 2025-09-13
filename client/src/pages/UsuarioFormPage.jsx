@@ -1,6 +1,6 @@
 import {useEffect} from 'react'
 import {useForm} from 'react-hook-form'
-import { createUsuario, updateUsuario, getUsuario } from '../api/usuarios.api'
+import { createUsuario, updateUsuario, getUsuario } from '../services/usuarios.api'
 import {useNavigate, useParams} from 'react-router-dom'
 
 export function UsuarioFormPage() {

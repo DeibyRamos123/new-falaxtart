@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { loadUserPublications, profileUsuario } from '../api/usuarios.api';
-import { ProfileCard } from '../components/ProfileCard';
-import '../components/css/ProfilePage.css'
-import { UserPublications } from '../components/UserPublications';
+import { loadUserPublications, profileUsuario } from '../../services/usuarios.api';
+import { ProfileCard } from './components/profilecards/ProfileCard';
+import '../../styles/ProfilePage.css'
+import { UserPublications } from '../../components/UserPublications';
 import { Link, useParams } from 'react-router-dom';
-import cargando from '../assets/loading.gif';
+import cargando from '../../assets/loading.gif';
 
 export function Profile() {
 

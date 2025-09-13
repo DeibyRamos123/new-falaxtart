@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { ObtainPublications } from '../api/usuarios.api';
-import { PublicationCard } from '../components/PublicationCard';
-import '../components/css/Home.css';
-import '../components/css/loading.css';
-import cargando from '../assets/loading.gif';
+import { ObtainPublications } from '../../services/usuarios.api';
+import { PublicationCard } from '../profile/components/publication/PublicationCard';
+import '../../styles/Home.css';
+import '../../styles/loading.css';
+import cargando from '../../assets/loading.gif';
 
 export function Home() {
   const [publications, setPublications] = useState([]);
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([]); 
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

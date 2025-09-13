@@ -1,5 +1,5 @@
 import React from 'react'
-import './css/ModalForm.css'
+import '../styles/ModalForm.css'
 
 export function ModalForm({children, estadoModal, cambiarEstado, title}) {
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import './css/ProfileMenu.css'
+import '../../styles/ProfileMenu.css'
 import { Link, useNavigate } from 'react-router-dom';
 
 export function ProfileMenu({avatar, username, linkState, setLinkState, id}) {

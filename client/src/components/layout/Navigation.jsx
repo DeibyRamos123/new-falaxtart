@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from "react-router-dom";
-import logo from '../assets/logo.png';
-import './css/header.css'
-import { ModalForm } from './ModalForm';
-import './css/Forms.css'
+import logo from '../../assets/logo.png';
+import '../../styles/header.css'
+import { ModalForm } from '../ModalForm';
+import '../../styles/Forms.css'
 import { useForm } from 'react-hook-form';
-import { createUsuario, homeUsuario, loginUsuario } from '../api/usuarios.api';
-import { ProfileMenu } from './ProfileMenu';
+import { createUsuario, homeUsuario, loginUsuario } from '../../services/usuarios.api';
+import { ProfileMenu } from '../ui/ProfileMenu';
 
 export function Navigation() {
 

@@ -2,6 +2,9 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
+class Role (models.Model):
+    name = models.CharField(max_length=10, null=False)
+    code = models.CharField(max_length=3, null=False)
 
 class Usuario(AbstractUser):
     date_birth = models.DateField(null=False)

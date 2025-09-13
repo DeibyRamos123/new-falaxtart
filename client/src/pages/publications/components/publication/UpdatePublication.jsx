@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { ObtainPublication } from '../api/usuarios.api';
-import '../components/css/updatePub.css'
-import '../components/css/loading.css';
-import cargando from '../assets/loading.gif';
+import { ObtainPublication } from '../../../../services/usuarios.api';
+import '../../../../styles/updatePub.css'
+import '../../../../styles/loading.css';
+import cargando from '../../../../assets/loading.gif';
 
 export function UpdatePublication() {
 
@@ -33,6 +33,7 @@ export function UpdatePublication() {
 
     useEffect(() => {
         let currentUser = parseInt(localStorage.getItem('SessionId'));
+        console.log(curre)
         let publicationUserID = parseInt(userInfo.id);
 
         if (currentUser != publicationUserID) {

@@ -1,5 +1,5 @@
 import React from 'react'
-import './css/WorksCard.css'
+import '../styles/WorksCard.css'
 
 export function WorksCard({ image }) {
   return (

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import './css/ProfileCard.css'
-import { ModalForm } from './ModalForm'
+import '../../../../styles/ProfileCard.css'
+import { ModalForm } from '../../../../components/ModalForm'
 import { useForm } from 'react-hook-form';
-import { updateUserInfo } from '../api/usuarios.api';
+import { updateUserInfo } from '../../../../services/usuarios.api';
 
 export function ProfileCard({username, img, coverImg, biography, name, currentUser}) {
 

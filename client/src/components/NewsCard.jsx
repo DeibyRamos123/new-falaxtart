@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from '../assets/promo.jpg'
-import './css/NewsCard.css'
+import '../styles/NewsCard.css'
 
 export function NewsCard() {
   return (

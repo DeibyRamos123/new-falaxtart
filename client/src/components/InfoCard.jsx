@@ -1,5 +1,5 @@
 import React from 'react'
-import './css/InfoCard.css'
+import '../styles/InfoCard.css'
 export function InfoCard() {
   return (
     <div className="info-list">

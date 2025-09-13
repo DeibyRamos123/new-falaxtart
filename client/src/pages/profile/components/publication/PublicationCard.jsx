@@ -1,5 +1,5 @@
 import React from 'react'
-import '../components/css/PublicationCard.css';
+import '../../../../styles/PublicationCard.css';
 import { Link} from "react-router-dom";
 
 export function PublicationCard({title, avatar, content, username, usuarioId, publicationId}) {

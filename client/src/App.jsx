@@ -1,12 +1,12 @@
 import React from "react"
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
 
-import { Navigation } from "./components/Navigation"
-import { Home } from "./pages/Home"
+import { Navigation } from "./components/layout/Navigation"
+import { Home } from "./pages/home/Home"
 import { IndexPage } from "./pages/IndexPage"
-import { Profile } from "./pages/Profile"
-import { PublicationFormPage } from "./pages/PublicationFormPage"
-import { UpdatePublication } from "./pages/UpdatePublication"
+import { Profile } from "./pages/profile/Profile"
+import { PublicationFormPage } from "./pages/publications/PublicationFormPage"
+import { UpdatePublication } from "./pages/publications/components/publication/UpdatePublication"
 
 function App() {
 
