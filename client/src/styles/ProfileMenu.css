@@ -22,6 +22,7 @@
     right: 0;
     gap: 5px;
     transition: all ease .2s;
+    z-index: 100;
 }
 
 .profile-menu__links--active {

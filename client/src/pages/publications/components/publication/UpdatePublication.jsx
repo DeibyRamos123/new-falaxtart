@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { ObtainPublication } from '../../../../services/usuarios.api';
+import { ObtainPublication } from '../../../../services/publications.api';
 import '../../../../styles/updatePub.css'
 import '../../../../styles/loading.css';
 import cargando from '../../../../assets/loading.gif';

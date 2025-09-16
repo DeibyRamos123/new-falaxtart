@@ -1,7 +1,8 @@
 import axios from 'axios'
 
+
 const usuariosApi = axios.create({
-    baseURL: 'http://localhost:8000/usuarios/'
+    baseURL: 'http://localhost:8000/falaxart/api/users/v1/'
 })
 
 usuariosApi.interceptors.request.use((config) => {
@@ -11,6 +12,8 @@ usuariosApi.interceptors.request.use((config) => {
     }
     return config;
 })
+
+
 
 export const getUsuario = (id) => usuariosApi.get(`/${id}/`)
 
@@ -28,7 +31,7 @@ export const updateUsuario = (id, usuario) => {
 }
 
 export const homeUsuario = () => {
-    return usuariosApi.get('home/');
+    return usuariosApi.get('me/');
 }
 
 export const profileUsuario = (id) =>{
@@ -41,19 +44,3 @@ export const updateUserInfo = async (datos, token) => {
     });
 };
 
-export const uploadPublication = (datos) => {
-    return usuariosApi.post("create-publication/", datos);
-}
-
-export const loadUserPublications = (id) => {
-    return usuariosApi.get(`user-publications/${id}`);
-}
-
-
-export const ObtainPublication = (id) => {
-    return usuariosApi.get(`publication-obtain/${id}`);
-}
-
-export const ObtainPublications = () => {
-    return usuariosApi.get(`publications/`)
-}

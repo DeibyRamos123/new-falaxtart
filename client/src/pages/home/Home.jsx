@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { ObtainPublications } from '../../services/usuarios.api';
-import { PublicationCard } from '../profile/components/publication/PublicationCard';
+import { ObtainPublications } from '../../services/publications.api';
+import { PublicationCard } from './components/publications/PublicationCard';
 import '../../styles/Home.css';
 import '../../styles/loading.css';
 import cargando from '../../assets/loading.gif';

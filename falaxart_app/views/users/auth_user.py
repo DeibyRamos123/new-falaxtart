@@ -50,7 +50,7 @@ def profile(request, id):
 @api_view(['GET'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
-def home (request):
+def me (request):
     serializador = UsuarioSerializer(instance=request.user)
 
     # return Response("you are login with {}".format(request.user.username), status=status.HTTP_200_OK)

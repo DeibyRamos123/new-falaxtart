@@ -1,15 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../../styles/ProfileMenu.css'
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
 
 export function ProfileMenu({avatar, username, linkState, setLinkState, id}) {
     const defaultImg = 'https://i.pinimg.com/736x/7c/ee/6f/7cee6fa507169843e3430a90dd5377d4.jpg';
     const navigate = useNavigate();
 
-    const handleLoguot = ()=> {
-        localStorage.removeItem('token');
+    const { user, logout, loading, } = useAuth();
+
+    const handleLoguot = () =>  logout();
+
+    useEffect(() => {
+      if (!loading && !user) {
         navigate('/');
-    }
+      }
+    }, [user, loading, navigate]);
     
   return (
     <div className="profile-menu">

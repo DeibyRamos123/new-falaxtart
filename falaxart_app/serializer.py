@@ -14,7 +14,11 @@ class UsuarioSerializer(serializers.ModelSerializer):
                   'date_birth',
                   'avatar',
                   'cover',
-                  'biography'
+                  'biography',
+                  'premium',
+                  'color_theme',
+                  'background',
+                  'background_divs'
                   )
     
 

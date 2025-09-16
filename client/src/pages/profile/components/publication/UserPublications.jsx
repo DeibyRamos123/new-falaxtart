@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/UserPublications.css'
+import '../../../../styles/UserPublications.css'
 export function UserPublications({avatar, title, content}) {
   return (
     <div className="publication">
