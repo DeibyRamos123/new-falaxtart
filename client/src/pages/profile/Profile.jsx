@@ -12,6 +12,7 @@ import { useIsDifferentUser } from '../../hooks/useIsDifferentUser';
 
 export function Profile() {
     const { id } = useParams();
+    const { bgDivsTheme, gradientTheme } = useAuth();
     const { usuario, publicaciones, loading, error } = useProfileData(id);
     const isDifferentUser = useIsDifferentUser(usuario?.id);
 
@@ -41,10 +42,17 @@ export function Profile() {
           name={usuario.first_name}
           currentUser={isDifferentUser}
           premium={usuario.premium}
+          colorTheme={usuario.color_theme}
+          bgDivsTheme={usuario.background_divs}
+          gradientTheme={usuario.gradient_theme}
+
         />
       </section>
 
-      <section className="publications-section">
+      <section 
+      className="publications-section"
+      style={{backgroundImage: `linear-gradient(to bottom, ${bgDivsTheme}, ${gradientTheme})`}}
+       >
         {publicaciones.length > 0 ? (
           publicaciones.map(publicacion => (
             <Link to={`/update-publication/${publicacion.id}`} className='publication-link' key={publicacion.id}>

@@ -1,5 +1,6 @@
 import { ModalForm } from '../../../../components/ModalForm';
 import { useUpdateProfile } from '../../../../hooks/useUpdateProfile';
+import { PremiumCard } from '../premium/PremiumCard';
 
 export function EditProfileModal({username, biography, img, coverImg, name, modalState, setModalState}) {
 
@@ -34,6 +35,7 @@ export function EditProfileModal({username, biography, img, coverImg, name, moda
             </div>
 
 
+
             <div className="modal-form__inputs">
                 <input type="text" className='modal-form__input' 
                 {...register('first_name', {required:true})}
@@ -41,9 +43,16 @@ export function EditProfileModal({username, biography, img, coverImg, name, moda
                 <textarea className='modal-form__input' 
                 {...register('biography', {required: true})}
                 />
+
+                <PremiumCard 
+                img={img}
+                coverImg={coverImg}
+                />
+
                 <button className='modal-form__btn-submit'> Actualizar </button>
             </div>
         </form>
+        
 
         </ModalForm>
     )

@@ -1,0 +1,49 @@
+.premium-card__section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.premium-card__color-picker {
+    display: flex;
+    gap: 5px;
+}
+
+.premium-card__color-picker__group__title {
+    font-size: 0.8rem;
+}
+
+.premium-card__color-picker__group__input {
+    width: 70px;
+    height: 30px;
+    border-width: 20px;
+    border-radius: 4px;
+}
+
+.premium-card__preview {
+    width: 385px;
+    height: 300px;
+    background-color: #333;
+    border-radius: 16px;
+    position: relative;
+}
+
+.premium-card__preview__cover-container, .premium-card__preview__cover {
+    width: 100%;
+    border-radius: 16px;
+}
+
+
+.premium-card__preview__profile-container {
+    width: 100px;
+    position: absolute;
+    top: 56%;
+    left: 37%;
+}
+
+.premium-card__preview__profile {
+    width: 100%;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}

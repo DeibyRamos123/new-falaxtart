@@ -1,6 +1,9 @@
 import React from 'react'
 import '../../../../styles/UserPublications.css'
+import { useAuth } from '../../../../hooks/useAuth'
 export function UserPublications({avatar, title, content}) {
+
+
   return (
     <div className="publication">
         <div className="publication__body">

@@ -5,8 +5,18 @@ import { InfoCard } from '../components/InfoCard'
 import work from '../assets/work.jpg'
 import art from '../assets/art.jpg'
 import '../App.css'
+import { useAuth } from '../hooks/useAuth'
+import { useNavigate } from 'react-router-dom'
 
 export function IndexPage() {
+
+  const { user } = useAuth();
+  const navigate = useNavigate()
+
+  if (user) {
+    navigate('/home')
+  }
+
   return (
     <>
     <section className="news-section">

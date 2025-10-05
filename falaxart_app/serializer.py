@@ -18,7 +18,8 @@ class UsuarioSerializer(serializers.ModelSerializer):
                   'premium',
                   'color_theme',
                   'background',
-                  'background_divs'
+                  'background_divs',
+                  'gradient_theme'
                   )
     
 

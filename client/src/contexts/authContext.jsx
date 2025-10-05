@@ -10,6 +10,7 @@ export function AuthProvider({ children }) {
     const [colorTheme, setColorTheme] = useState(null);
     const [bgTheme, setBgTheme] = useState(null);
     const [bgDivsTheme, setBgDivsTheme] = useState(null);
+    const [gradientTheme, setGradientTheme] = useState(null);
     const [accessToken, setAccessToken] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -22,6 +23,10 @@ export function AuthProvider({ children }) {
             }).then(res => {
                 setUser(res.data);
                 setAccessToken(token);
+                setColorTheme(res.data.color_theme);
+                setBgTheme(res.data.background);
+                setBgDivsTheme(res.data.background_divs);
+                setGradientTheme(res.data.gradient_theme);
             }).catch(() => {
                 setUser(null);
                 localStorage.removeItem('access_token');
@@ -48,7 +53,7 @@ export function AuthProvider({ children }) {
                 res = await axios.get('http://localhost:8000/falaxart/api/users/v1/me/', {
                     headers: { Authorization: `Token ${token}` }
                 });
-                setUser(res.data.user);
+                setUser(res.data);
             } catch (err) {
                 setUser(null);
                 localStorage.removeItem('access_token');
@@ -71,7 +76,7 @@ export function AuthProvider({ children }) {
     }
 
     return (
-        <AuthContext.Provider value={{ user, accessToken, login, logout, loading, isAuthenticated: !!accessToken, loadUser }}>
+        <AuthContext.Provider value={{ user, accessToken, login, logout, loading, isAuthenticated: !!accessToken, loadUser, colorTheme, bgDivsTheme, bgTheme, gradientTheme }}>
             {children}
         </AuthContext.Provider>
     );

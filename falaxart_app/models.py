@@ -14,6 +14,7 @@ class Usuario(AbstractUser):
     color_theme = models.CharField(max_length=20, default='#5D3FD3')
     background = models.CharField(max_length=20, default='#121212')
     background_divs = models.CharField(max_length=20, default='#1B1C1D')
+    gradient_theme = models.CharField(max_length=20, default='#1B1C1D')
     premium = models.BooleanField(default=False)
     banned = models.BooleanField(default=False)
 

@@ -7,11 +7,13 @@ import { EditProfileModal } from './EditProfileModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCrown } from '@fortawesome/free-solid-svg-icons';
 
-export function ProfileCard({username, img, coverImg, biography, name, currentUser, premium}) {
+export function ProfileCard({username, img, coverImg, biography, name, currentUser, premium, colorTheme, gradientTheme, bgDivsTheme}) {
 
     
 
     const [modalState, setModalState] = useState(false);
+
+
 
 
     const onClick = () => setModalState(true);
@@ -19,16 +21,14 @@ export function ProfileCard({username, img, coverImg, biography, name, currentUs
     const defaultImg = 'https://i.pinimg.com/736x/7c/ee/6f/7cee6fa507169843e3430a90dd5377d4.jpg';
     const defaultCover = 'https://i.pinimg.com/736x/15/e7/5d/15e75d82a96502ff9a8012a8d3cf7011.jpg';
 
-
-
   return (
-   <section className="profile-info">
+   <section className="profile-info" style={{ backgroundColor: `${bgDivsTheme}` }}>
         <div className="profile-info__cover">
             <img src={coverImg ? coverImg : defaultCover} alt="cover" className='profile-info__cover-img'/>
         </div>
         <div className="profile-info__user-info">
             <div className="profile-info__user-info-img-text">
-                <img src={img ? img : defaultImg } alt="profile image" className="profile-info__user-img" />
+                <img src={img ? img : defaultImg } alt="profile image" style={{ borderColor: `${colorTheme}` }} className="profile-info__user-img" />
                 <div className="profile-info__user-text">
                     <div className="profile-info__user-text__name-section">
                         <h3 className='profile-info__name'>{name ? name : 'John'}</h3>
