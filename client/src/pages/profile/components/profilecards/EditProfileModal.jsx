@@ -2,9 +2,13 @@ import { ModalForm } from '../../../../components/ModalForm';
 import { useUpdateProfile } from '../../../../hooks/useUpdateProfile';
 import { PremiumCard } from '../premium/PremiumCard';
 
-export function EditProfileModal({username, biography, img, coverImg, name, modalState, setModalState}) {
+export function EditProfileModal({username, biography, img, coverImg, name, modalState, setModalState, colorTheme, gradientTheme, bgDivsTheme}) {
 
-    const { previewProfile, previewCover, onSubmit, coverChange, avatarChange, register } = useUpdateProfile(username, name, img, coverImg, biography, setModalState);
+// ⭐ CLAVE: Extraer la nueva función de actualización de colores y las funciones de RHF
+    const { 
+        previewProfile, previewCover, onSubmit, 
+        coverChange, avatarChange, register,  // Mantener setValue para inicialización si es necesaria
+    } = useUpdateProfile(username, name, img, coverImg, biography, setModalState); // Asegúrate de quitar los props de color si ya no inicializas con ellos
 
     return (
         <ModalForm
@@ -44,14 +48,18 @@ export function EditProfileModal({username, biography, img, coverImg, name, moda
                 {...register('biography', {required: true})}
                 />
 
-                <PremiumCard 
-                img={img}
-                coverImg={coverImg}
-                />
-
                 <button className='modal-form__btn-submit'> Actualizar </button>
             </div>
         </form>
+        <PremiumCard 
+            img={img}
+            coverImg={coverImg}
+            register={register}
+            colorTheme={colorTheme} 
+            gradientTheme={gradientTheme}
+            bgDivsTheme={bgDivsTheme}
+            setModalState={setModalState}
+        />
         
 
         </ModalForm>

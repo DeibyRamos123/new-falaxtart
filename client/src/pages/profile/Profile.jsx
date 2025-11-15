@@ -6,13 +6,11 @@ import '../../styles/ProfilePage.css'
 import { UserPublications } from './components/publication/UserPublications';
 import { Link, useParams } from 'react-router-dom';
 import cargando from '../../assets/loading.gif';
-import { useAuth } from '../../hooks/useAuth';
 import { useProfileData } from '../../hooks/useProfileData';
 import { useIsDifferentUser } from '../../hooks/useIsDifferentUser';
 
 export function Profile() {
     const { id } = useParams();
-    const { bgDivsTheme, gradientTheme } = useAuth();
     const { usuario, publicaciones, loading, error } = useProfileData(id);
     const isDifferentUser = useIsDifferentUser(usuario?.id);
 
@@ -27,6 +25,7 @@ export function Profile() {
     if (error) {
         return <p>Ocurrió un error al cargar el perfil.</p>;
     }
+    
 
     const profileImg = usuario?.avatar ? `http://127.0.0.1:8000/${usuario.avatar}` : null;
     const coverImg = usuario?.cover ? `http://127.0.0.1:8000/${usuario.cover}` : null;
@@ -43,15 +42,14 @@ export function Profile() {
           currentUser={isDifferentUser}
           premium={usuario.premium}
           colorTheme={usuario.color_theme}
+          bgTheme={usuario.background}
           bgDivsTheme={usuario.background_divs}
-          gradientTheme={usuario.gradient_theme}
-
         />
       </section>
 
       <section 
       className="publications-section"
-      style={{backgroundImage: `linear-gradient(to bottom, ${bgDivsTheme}, ${gradientTheme})`}}
+      style={{backgroundImage: `linear-gradient(to bottom, ${usuario.background_divs} 58%, ${usuario.background} 92%)`}}
        >
         {publicaciones.length > 0 ? (
           publicaciones.map(publicacion => (
@@ -60,6 +58,9 @@ export function Profile() {
                 content={`http://127.0.0.1:8000/${publicacion.content}`}
                 title={publicacion.title}
                 avatar={profileImg}
+                platform={publicacion.platform_publication}
+                tag={publicacion.tag2}
+                colorTheme={publicacion.usuario.color_theme}
               />
             </Link>
           ))

@@ -2,33 +2,26 @@ import React, { useEffect, useState } from 'react'
 import '../../styles/PublicationForm.css'
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { homeUsuario } from '../../services/usuarios.api'
 import { uploadPublication } from '../../services/publications.api';
+import { useAuth } from '../../hooks/useAuth';
+import { useEffectEvent } from 'react';
 
 export function PublicationFormPage() {
   const defaultImg = 'https://i.pinimg.com/736x/13/93/83/139383bbb0d7e611ce57391907c37f7b.jpg';
 
   const [imgPreview, setImgPreview] = useState(defaultImg);
-  const [usuario, setUsuario] = useState([]);
+
+  const { user, accessToken } = useAuth();
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    async function  loadUsuarioInfo() {
-        try {
-          const response = await homeUsuario();
-          setUsuario(response.data);
-        } catch (error) {
-          console.error('Error: ', error);
-          if (error.message && error.response.status == 401) {
-            window.location.href = '/'
-          }
-        }
-    }
-    loadUsuarioInfo();
-  }, [])
 
   const {register, handleSubmit, formState: {errors}, setValue } = useForm();
+
+  // useEffect(() => {
+  //     console.log(user.id);
+  //     console.log(localStorage.getItem('token'));
+  // }, [])
 
 
   const handleOnChange = (e) => {
@@ -45,6 +38,9 @@ export function PublicationFormPage() {
     try {
 
       const formData = new FormData();
+      formData.append('usuario_id', user.id);
+      formData.append('platform_publication', data.platform_publication);
+      formData.append('tag2', data.tag2);
       formData.append('title', data.title);
       formData.append('description', data.description);
       formData.append('for_sale', data.for_sale || false);
@@ -56,7 +52,7 @@ export function PublicationFormPage() {
       }
 
       console.log('Datos a enviar:', {
-        usuario_id: usuario.id,
+        usuario_id: user.id,
         title: data.title,
         for_sale: data.for_sale
       }); 
@@ -82,9 +78,36 @@ export function PublicationFormPage() {
           accept="image/*"
           className="publication-form__image-btn" 
           />
+
         </div>
         <div className="publication-form__inputs">
           <h1 className="publication-form__title">Nueva Publicacion</h1>
+          <select
+          className='publication-form__select-plat'
+          {...register('platform_publication', {required: true})}
+          defaultValue=""
+          >
+              <option value="" disabled>Selecciona una plataforma</option>
+              <option value="playstation">Playstation</option>
+              <option value="xbox">Xbox</option>
+              <option value="nintendo">Nintendo</option>
+              <option value="pc">PC</option>
+              <option value="mobile">Mobile</option>
+          </select>
+
+          <select
+          className='publication-form__select-cat'
+          {...register('tag2', {required: true})}
+          defaultValue=""
+          >
+              <option value="" disabled>Selecciona una categoría</option>
+              <option value="help">Help</option>
+              <option value="bug">Bug</option>
+              <option value="funny">Funny</option>
+              <option value="lpt">let's play together</option>
+              <option value="other">Other</option>
+          </select>
+
           <input type="text" placeholder='Titulo' 
           className='publication-form__input'
           {...register('title',{required:true})}
@@ -95,7 +118,7 @@ export function PublicationFormPage() {
           />
           <div className="publication-form__checkbox-container">
             <label className='publication-form__label'>
-                ¿Comercializar?
+                ¿Publicación premium?
                 <input type="checkbox" 
                 className='publication-form__checkbox' 
                 {...register('for_sale')}

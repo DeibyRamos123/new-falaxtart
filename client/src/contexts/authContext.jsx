@@ -10,7 +10,6 @@ export function AuthProvider({ children }) {
     const [colorTheme, setColorTheme] = useState(null);
     const [bgTheme, setBgTheme] = useState(null);
     const [bgDivsTheme, setBgDivsTheme] = useState(null);
-    const [gradientTheme, setGradientTheme] = useState(null);
     const [accessToken, setAccessToken] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -26,7 +25,6 @@ export function AuthProvider({ children }) {
                 setColorTheme(res.data.color_theme);
                 setBgTheme(res.data.background);
                 setBgDivsTheme(res.data.background_divs);
-                setGradientTheme(res.data.gradient_theme);
             }).catch(() => {
                 setUser(null);
                 localStorage.removeItem('access_token');
@@ -76,7 +74,7 @@ export function AuthProvider({ children }) {
     }
 
     return (
-        <AuthContext.Provider value={{ user, accessToken, login, logout, loading, isAuthenticated: !!accessToken, loadUser, colorTheme, bgDivsTheme, bgTheme, gradientTheme }}>
+        <AuthContext.Provider value={{ user, accessToken, login, logout, loading, isAuthenticated: !!accessToken, loadUser, colorTheme, bgDivsTheme, bgTheme }}>
             {children}
         </AuthContext.Provider>
     );

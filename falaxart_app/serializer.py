@@ -19,7 +19,8 @@ class UsuarioSerializer(serializers.ModelSerializer):
                   'color_theme',
                   'background',
                   'background_divs',
-                  'gradient_theme'
+                  'gradient_theme',
+                  'platform_user'
                   )
     
 
@@ -33,7 +34,9 @@ class PublicationSerializer(serializers.ModelSerializer):
                   'title',
                   'content',
                   'description',
-                  'for_sale'
+                  'for_sale',
+                  'platform_publication',
+                  'tag2'
                   )
         read_only_fields = ('usuario',)
 

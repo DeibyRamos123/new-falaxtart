@@ -4,9 +4,10 @@ import axios from 'axios'
 const usuariosApi = axios.create({
     baseURL: 'http://localhost:8000/falaxart/api/users/v1/'
 })
-
+// tener cuidado con el token porque si se usa un token de otro usuario le actualiza a este
+// el nombre correcto es access_token NO token
 usuariosApi.interceptors.request.use((config) => {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('access_token')
     if(token){
         config.headers.Authorization = `Token ${token}`;
     }

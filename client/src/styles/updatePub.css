@@ -33,53 +33,6 @@
     border-radius: 3px;
 }
 
-.publication-user-section {
-    display: flex;
-    align-items: center;
-    background-color: #333;
-    width: 33%;
-    border-radius: 3px;
-    padding: 20px;
-    gap: 15px;
-}
-
-.publication-user-section__avatar {
-    border: 1px solid #fff;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-}
-
-.user__avatar {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    transition: all ease .2s;
-}
-
-.user__avatar:hover {
-    filter: brightness(0.8);
-}
-
-.publication-info-section {
-    background-color: #333;
-    padding: 20px;
-    border-radius: 3px;
-    width: 255px;
-}
-
-.publication-user {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    gap: 10px;
-    border-bottom: 1px solid #000;
-}
-
-.user-username{
-    font-size: 10px;
-}
-
 .publication-title__label {
     font-size: 11px;
     color: #ccc;
@@ -90,4 +43,6 @@
     background-color: #222;
     border-radius: 3px;
 }
+
+
 

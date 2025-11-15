@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from "react-router-dom";
-import logo from '../../assets/logo.png';
+import logo from '../../assets/logoFalax.png';
 import '../../styles/header.css'
 import { ModalForm } from '../ModalForm';
 import '../../styles/Forms.css'
@@ -90,21 +90,27 @@ export function Navigation() {
         <Link to={isAuthenticated ? '/home' : '/indexpage'} className='header__link'>
           <div className="header__logo">
             <img className="logo" src={logo} alt="logo" />
-            <h1 className='header__title'>FALAXART</h1>
+            <h1 className='header__title'>FALAXGUILD</h1>
           </div>
         </Link>
         <div className="buttons-auth">
           {isAuthenticated ? (
             <>
               <Link to='/upload-publication' className='button-upload-work'>Upload</Link>
-              <button className='button-profile-info' onClick={abrirMenu}>
+              <div
+                className='button-profile-info'
+                onClick={abrirMenu}
+                role='button'
+                tabIndex={0}
+              >
                 <ProfileMenu
                   username={user?.username || 'John Doe'}
                   avatar={imagen}
                   linkState={linkState}
-                  id={user?.id || '1'}
-                  setLinkState={setLinkState} />
-              </button>
+                  id={user?.id || 'undefinded'}
+                  setLinkState={setLinkState}
+                />
+              </div>
             </>
           ) : (
             <>

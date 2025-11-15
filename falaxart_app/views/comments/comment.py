@@ -1,6 +1,6 @@
 from falaxart_app.views.imports import *
 from falaxart_app.serializer import CommentSerializer
-from falaxart_app.models import Comment
+from falaxart_app.models import Comment, Publication
 
 @api_view(['GET'])
 @authentication_classes([TokenAuthentication])
@@ -10,6 +10,17 @@ def comments(requets):
     serializer = CommentSerializer(comments, many=True)
 
     return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def obtain_comment_publication(request, pub_id): 
+    comments = Comment.objects.filter(publication_id=pub_id).order_by('-created_at')
+    serializer = CommentSerializer(comments, many=True)
+
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
 
 
 @api_view(['GET'])

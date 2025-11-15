@@ -4,6 +4,7 @@ import { PublicationCard } from './components/publications/PublicationCard';
 import '../../styles/Home.css';
 import '../../styles/loading.css';
 import cargando from '../../assets/loading.gif';
+import { useAuth } from '../../hooks/useAuth';
 
 export function Home() {
   const [publications, setPublications] = useState([]);
@@ -14,7 +15,6 @@ export function Home() {
     async function loadUsuarioInfo() {
       try {
         const response = await ObtainPublications();
-        console.log(response.data)
         setPublications(response.data);
         setUsers(response.data.usuario);
         setLoading(false);
@@ -41,12 +41,16 @@ export function Home() {
     <section className="publications-home-section">
       {publications.map(publication => (
         <PublicationCard
+          key={publication.id}
           title={publication.title}
           content={`http://localhost:8000/${publication.content}`}
           username={publication.usuario.username}
           avatar={`http://localhost:8000/${publication.usuario.avatar}`}
           usuarioId={publication.usuario.id}
           publicationId={publication.id}
+          platform={publication.platform_publication}
+          tag={publication.tag2}
+          colorTheme={publication.usuario.color_theme}
         />
       ))}
     </section>

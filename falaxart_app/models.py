@@ -7,10 +7,20 @@ class Role (models.Model):
     code = models.CharField(max_length=3, null=False)
 
 class Usuario(AbstractUser):
+    
+    PLATFORM_US = [
+        ('playstation', 'Playstation'),
+        ('xbox', 'Xbox'),
+        ('pc', 'PC'),
+        ('nintendo', 'Nintendo'),
+        ('mobile', 'Mobile')
+    ];
+
     date_birth = models.DateField(null=False)
     biography = models.TextField(default='Hi falaxart!')
     avatar = models.ImageField(upload_to='profile_images/', default='profile_images/default.jpg')
     cover = models.ImageField(upload_to='cover_images/', default='cover_images/default_cover.jpg')
+    platform_user = models.CharField(max_length=20, choices=PLATFORM_US, default='pc')
     color_theme = models.CharField(max_length=20, default='#5D3FD3')
     background = models.CharField(max_length=20, default='#121212')
     background_divs = models.CharField(max_length=20, default='#1B1C1D')
@@ -23,7 +33,26 @@ class Usuario(AbstractUser):
 
 
 class Publication(models.Model):
+    PLATFORM_PUB = [
+        ('playstation', 'Playstation'),
+        ('xbox', 'Xbox'),
+        ('pc', 'PC'),
+        ('nintendo', 'Nintendo'),
+        ('mobile', 'Mobile')
+    ];
+
+    TAG_CHOICE = [
+        ('help', 'Help'),
+        ('bug', 'Bug'),
+        ('funny', 'funny'),
+        ('lpt', 'LPT'),
+        ('other', 'Other')
+    ]
+
+
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    platform_publication = models.CharField(max_length=20, choices=PLATFORM_PUB, default='pc')
+    tag2 = models.CharField(max_length=20, choices=TAG_CHOICE, default='other')
     title = models.CharField(max_length=25, null=False)
     content = models.ImageField(upload_to='publications/',null=False)
     created_at = models.DateTimeField(auto_now_add=True)

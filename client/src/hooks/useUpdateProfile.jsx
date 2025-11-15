@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { updateUserInfo } from '../services/usuarios.api';
 
 export function useUpdateProfile(username, name, img, coverImg, biography, setModalState) {
-    const {register, handleSubmit, formState: {errors}, setValue } = useForm();
+    const {register, handleSubmit, formState: {errors}, setValue, getValues } = useForm();
 
     const [previewProfile, setPreviewProfile] = useState(img);
     const [previewCover, setPreviewCover] = useState(coverImg);
@@ -63,6 +63,7 @@ export function useUpdateProfile(username, name, img, coverImg, biography, setMo
             console.error('error al hacer la solicitud', error)
         }
     })
+
 
     return {previewProfile, previewCover, onSubmit, coverChange, avatarChange, register }
 }
