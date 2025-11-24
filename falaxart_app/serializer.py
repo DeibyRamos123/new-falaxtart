@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Usuario, Publication, Comment
+from .models import Usuario, Publication, Comment, Follow
 from django.contrib.auth.hashers import make_password
 
 class UsuarioSerializer(serializers.ModelSerializer):
@@ -52,3 +52,9 @@ class CommentSerializer(serializers.ModelSerializer):
                 'contenido',
                 'created_at')
         read_only_fields = ('usuario',)
+
+
+class FollowSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Follow
+        fields = '__all__'

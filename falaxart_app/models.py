@@ -76,6 +76,6 @@ class Comment(models.Model):
     contenido = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
 
-# class Follow(models.Model):
-#     follower = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-#     following = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+class Follow(models.Model):
+    follower = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='user_follow')
+    following = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='user_profile')

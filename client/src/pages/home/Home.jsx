@@ -4,7 +4,6 @@ import { PublicationCard } from './components/publications/PublicationCard';
 import '../../styles/Home.css';
 import '../../styles/loading.css';
 import cargando from '../../assets/loading.gif';
-import { useAuth } from '../../hooks/useAuth';
 
 export function Home() {
   const [publications, setPublications] = useState([]);

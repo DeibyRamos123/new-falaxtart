@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAuth } from '../../../../hooks/useAuth'
 
-export function ProfileButtons({ currentUser, onClick}) {
+export function ProfileButtons({ currentUser, onClick, userProfileID }) {
 
     const  { accessToken } = useAuth();
 
