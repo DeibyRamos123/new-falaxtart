@@ -31,8 +31,8 @@ export default function useFollows(followerId, followingId, params) {
                 try {
                     // 🛑 Llama a la nueva función de API para verificar el estado
                     const result = await checkFollowStatus(followerId, followingId); 
-                    
-                    if (result.ok && result.data.is_following !== undefined) {
+                
+                    if (result.data.is_following !== undefined) {
                         setSiguiendo(result.data.is_following);
                     }
                 } catch (error) {
@@ -55,7 +55,6 @@ export default function useFollows(followerId, followingId, params) {
     }, [followingId]);
 
     useEffect(() => {
-        console.log(followers)
         setFCount(followers?.followers_count)
     }, [followers])
 
@@ -70,9 +69,6 @@ export default function useFollows(followerId, followingId, params) {
     };
 
     const handleUnfollow = async () => {
-
-        console.log(JSON.stringify(followData))
-
         try {
             const response = await removeFollow(followData);
             setSiguiendo(false);
