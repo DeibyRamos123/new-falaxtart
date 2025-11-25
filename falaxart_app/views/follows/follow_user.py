@@ -21,20 +21,38 @@ def get_user_followers(request, id):
 
     followers = Follow.objects.filter(following=id)
 
+    followers_count = Follow.objects.filter(following=id).count()
+
     serializer = FollowSerializer(followers, many=True)
 
-    return Response(serializer.data,status=status.HTTP_200_OK)
+    return Response({'followers_info': serializer.data, 'followers_count': followers_count},status=status.HTTP_200_OK)
 
+
+@api_view(['GET'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def check_follow_status(request, follower_id, following_id):
+    try:
+        # Intenta encontrar el registro de seguimiento
+        exists = Follow.objects.filter(
+            follower=follower_id,
+            following=following_id
+        ).exists() # 👈 Función eficiente de Django
+        
+        return Response({'is_following': exists}, status=status.HTTP_200_OK)
+    
+    except Exception:
+        return Response({'is_following': False}, status=status.HTTP_200_OK)
 
 @api_view(['DELETE']) # metodo de eliminacion
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
-def remove_follower(request):
+def remove_follower(request, follower_id, following_id):
     # La vista DELETE no necesita un Serializer para validar/guardar,
     # sino para obtener los IDs para la eliminación.
 
-    follower_id = request.data.get('follower')
-    following_id = request.data.get('following')
+    follower_id = follower_id
+    following_id = following_id
 
     if not follower_id or not following_id:
         return Response(

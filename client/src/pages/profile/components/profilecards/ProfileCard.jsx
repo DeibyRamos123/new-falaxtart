@@ -6,8 +6,9 @@ import { ProfileButtons } from './ProfileButtons';
 import { EditProfileModal } from './EditProfileModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCrown } from '@fortawesome/free-solid-svg-icons';
+import FollowCount from '../follows/FollowCount';
 
-export function ProfileCard({ username, img, coverImg, biography, name, currentUser, premium, colorTheme, bgTheme, bgDivsTheme }) {
+export function ProfileCard({ username, img, coverImg, biography, name, currentUser, premium, colorTheme, bgTheme, bgDivsTheme, userID, params }) {
 
 
     const [modalState, setModalState] = useState(false);
@@ -35,9 +36,18 @@ export function ProfileCard({ username, img, coverImg, biography, name, currentU
                         </div>
                         <h4 className='profile-info__username'>{username ? `@${username}` : '@JohnDoe'}</h4>
                         <h4>{biography ? biography : 'Hi im new in falaxart :D'}</h4>
+
+                        <FollowCount
+                        userProfileID={userID}
+                        />
                     </div>
                 </div>
-                <ProfileButtons currentUser={currentUser} onClick={onClick} />
+                <ProfileButtons 
+                userProfileID={userID}
+                currentUser={currentUser}
+                params={params}
+                onClick={onClick} 
+                />
             </div>
 
             <EditProfileModal

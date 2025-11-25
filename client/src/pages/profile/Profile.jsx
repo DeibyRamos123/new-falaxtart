@@ -34,6 +34,7 @@ export function Profile() {
     <>
       <section className="profile-section">
         <ProfileCard
+          userID={usuario.id}
           username={usuario.username}
           biography={usuario.biography}
           img={profileImg}
@@ -44,6 +45,7 @@ export function Profile() {
           colorTheme={usuario.color_theme}
           bgTheme={usuario.background}
           bgDivsTheme={usuario.background_divs}
+          params={id}
         />
       </section>
 
