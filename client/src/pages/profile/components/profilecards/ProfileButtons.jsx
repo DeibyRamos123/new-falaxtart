@@ -2,11 +2,11 @@ import React from 'react'
 import { useAuth } from '../../../../hooks/useAuth'
 import useFollows from '../../../../hooks/useFollows';
 
-export function ProfileButtons({ currentUser, onClick, userProfileID, params }) {
+export function ProfileButtons({ currentUser, onClick, params, handleFollow, siguiendo, handleUnfollow, isLoading, accessToken }) {
 
-    const  { accessToken, user } = useAuth();
+    
 
-    const { handleFollow, siguiendo, handleUnfollow, isLoading } = useFollows(user.id, userProfileID);
+    
 
     if (isLoading && accessToken) {
         return (

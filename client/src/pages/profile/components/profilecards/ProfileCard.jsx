@@ -7,11 +7,14 @@ import { EditProfileModal } from './EditProfileModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCrown } from '@fortawesome/free-solid-svg-icons';
 import FollowCount from '../follows/FollowCount';
+import useFollows from '../../../../hooks/useFollows';
 
 export function ProfileCard({ username, img, coverImg, biography, name, currentUser, premium, colorTheme, bgTheme, bgDivsTheme, userID, params }) {
 
 
     const [modalState, setModalState] = useState(false);
+    const { accessToken, user } = useAuth();
+    const { handleFollow, siguiendo, handleUnfollow, isLoading, fCount } = useFollows(user.id, userID);
 
     const onClick = () => setModalState(true);
 
@@ -39,6 +42,7 @@ export function ProfileCard({ username, img, coverImg, biography, name, currentU
 
                         <FollowCount
                         userProfileID={userID}
+                        fCount={fCount}
                         />
                     </div>
                 </div>
@@ -46,7 +50,12 @@ export function ProfileCard({ username, img, coverImg, biography, name, currentU
                 userProfileID={userID}
                 currentUser={currentUser}
                 params={params}
-                onClick={onClick} 
+                onClick={onClick}
+                handleFollow={handleFollow}
+                siguiendo={siguiendo}
+                handleUnfollow={handleUnfollow}
+                isLoading={isLoading}
+                accessToken={accessToken}
                 />
             </div>
 

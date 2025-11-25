@@ -19,8 +19,10 @@ export default function useFollows(followerId, followingId, params) {
         try {
             const response = await getFollowers(followingId);
             setFollowers(response.data);
+            // ✅ AGREGAR: Asegurar que fCount se inicialice con el valor del backend
+            setFCount(response.data?.followers_count || 0); 
         } catch (err) {
-            console.error('error al cargar el contenido')
+            console.error('error al cargar el contenido', err)
         }
     }
 
@@ -54,14 +56,11 @@ export default function useFollows(followerId, followingId, params) {
         loadFollowers();
     }, [followingId]);
 
-    useEffect(() => {
-        setFCount(followers?.followers_count)
-    }, [followers])
-
-
     const handleFollow = async () => {
         try {
             const response = await follow(followData);
+
+            setFCount(prevCount => prevCount + 1);
             setSiguiendo(true);
         } catch (error) {
             console.error('Error de red al intentar seguir:', error);
@@ -72,6 +71,8 @@ export default function useFollows(followerId, followingId, params) {
         try {
             const response = await removeFollow(followData);
             setSiguiendo(false);
+
+            setFCount(prevCount => Math.max(0, prevCount - 1));
         } catch (error) {
             console.error('Error de red al intentar seguir:', error);
         }
