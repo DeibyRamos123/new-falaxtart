@@ -4,9 +4,42 @@
     padding: 20px;
     border-radius: 3px;
     width: 455px;
-    height: 705px;
-    
+    max-height: 705px; /* Solo crece hasta aquí */
+    height: auto;      /* Se ajusta al contenido */
+
+    display: block;
     overflow-y: auto;
+    padding-bottom: 0;
+}
+
+/* 1. Contenedor de la barra (el fondo de la barrita) */
+.publication-info-section::-webkit-scrollbar {
+    width: 8px; /* Ancho de la barra vertical */
+    height: 8px; /* Alto de la barra horizontal (si existiera) */
+}
+
+/* 2. El "Thumb" o la parte que se mueve */
+.publication-info-section::-webkit-scrollbar-thumb {
+    background: #555; /* Color gris suave para que no resalte de más */
+    border-radius: 10px;
+    border: 2px solid #333; /* Crea un efecto de separación con el fondo */
+}
+
+/* 3. Cuando pasas el mouse por encima del scroll */
+.publication-info-section::-webkit-scrollbar-thumb:hover {
+    background: rgb(93, 63, 211); /* Usando el color morado de tus botones */
+}
+
+/* 4. El "Track" o el camino por donde corre la barra */
+.publication-info-section::-webkit-scrollbar-track {
+    background: transparent; /* Lo dejamos transparente para que se vea el fondo #333 */
+    border-radius: 10px;
+}
+
+/* Soporte para Firefox (usa propiedades estándar) */
+.publication-info-section {
+    scrollbar-width: thin; /* Hace la barra más delgada */
+    scrollbar-color: #555 transparent; /* Color del thumb y del track */
 }
 
 .publication-user {
@@ -95,8 +128,14 @@
 .publication-user-comments__view-more {
     background: none;
     border: none;
-    margin-top: 30px;
+    margin-top: 10px;
+    padding-bottom: 20px;
     cursor: pointer;
+    color: rgb(93, 63, 211); /* ← le das color visible */
+    font-weight: 600;
+    font-size: 0.85rem;
+    width: 100%;              /* ← ocupa todo el ancho */
+    text-align: center;       /* ← lo centra */
 }
 
 .publication-user-comments__view-more:hover {
@@ -127,13 +166,13 @@
 .user-comment__text-comment {
     display: flex;
     flex-direction: column;
-    width: 100%;
     min-width: 0; /* ← esto es clave cuando está dentro de un flexbox */
     overflow: hidden;
 }
 
 .user-comment__text-comment a {
     text-decoration: none;
+    display: inline-block;
 }
 
 .user-comment__username {
