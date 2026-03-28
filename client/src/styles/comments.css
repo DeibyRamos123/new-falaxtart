@@ -4,6 +4,9 @@
     padding: 20px;
     border-radius: 3px;
     width: 455px;
+    height: 705px;
+    
+    overflow-y: auto;
 }
 
 .publication-user {
@@ -12,6 +15,10 @@
     padding: 10px;
     gap: 10px;
     border-bottom: 1px solid #ffffff;
+}
+
+.comments-count {
+    text-align: center;
 }
 
 .user-username{
@@ -85,13 +92,24 @@
     margin-top: 30px;
 }
 
+.publication-user-comments__view-more {
+    background: none;
+    border: none;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.publication-user-comments__view-more:hover {
+    color: #ccc;
+}
+
 
 .user-comment {
     display: flex;
     gap: 6px;
-    align-items: center;
-    height: 50px;
+    align-items: flex-start;
 }
+
 
 .user-comment__avatar-container {
     width: 40px;
@@ -104,10 +122,14 @@
     height: 100%;
     border-radius: 50%;
     border: 2px solid #ffffff;
+    object-fit: cover;
 }
 .user-comment__text-comment {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    min-width: 0; /* ← esto es clave cuando está dentro de un flexbox */
+    overflow: hidden;
 }
 
 .user-comment__text-comment a {
@@ -120,8 +142,33 @@
     font-weight: 600;
 }
 
-.user-comment__text {
+.user-comment__text-comment__button-section__text {
     font-size: 0.8rem;
 }
+
+.user-comment__text-comment__button-section__text {
+    font-size: 0.8rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-all; /* cambia break-word por break-all para textos sin espacios */
+    max-width: 100%;
+    display: block; /* asegura que respete el ancho del padre */
+}
+
+
+.user-comment__text-comment__button-section__text__button {
+    background: none;
+    border: none;
+    color: rgb(93, 63, 211);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.user-comment__text-comment__button-section__text__button:hover {
+    text-decoration: underline;
+}
+
+
+
 
 

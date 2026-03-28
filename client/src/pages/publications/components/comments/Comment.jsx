@@ -1,6 +1,7 @@
 import React from 'react'
 import '../../../../styles/comments.css'
 import { Link } from 'react-router-dom'
+import { ReadMore } from '../../../../components/ReadMore'
 
 export default function Comment({userAvatar, username, comment, userID, colorTheme}) {
   return (
@@ -18,9 +19,9 @@ export default function Comment({userAvatar, username, comment, userID, colorThe
 
         <div className='user-comment__text-comment'>
             <Link to={`/profile/${userID}`}>
-                <span className="user-comment__username" style={{color: colorTheme}}>@{username}</span>
+                <span className="user-comment__username" style={{color: colorTheme}}>{username}</span>
             </Link>
-            <span className='user-comment__text'>{comment}</span>
+            <ReadMore comment={comment} />
         </div>
     </div>
   )

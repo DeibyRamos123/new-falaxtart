@@ -8,7 +8,7 @@ export function PremiumCard({ img, coverImg, colorTheme, gradientTheme, bgDivsTh
 
     // ESTADO LOCAL (PARA VISTA PREVIA DINÁMICA)
     const [selectedColorTheme, setSelectedColorTheme] = useState(colorTheme || '#5D3FD3');
-    const [gradientColorTheme, setGradientColorTheme] = useState(gradientTheme || '#000000');
+    const [gradientColorTheme, setGradientColorTheme] = useState(gradientTheme || '#1B1C1D');
     const [selectedColorBg, setColorBg] = useState(bgDivsTheme || '#1B1C1D');
 
     // Desestructurar el registro de RHF para aislar las propiedades de control
@@ -18,7 +18,7 @@ export function PremiumCard({ img, coverImg, colorTheme, gradientTheme, bgDivsTh
 
 
     // HANDLERS UNIFICADOS
-    const handleColorChange = (event) => {
+    const handleColorChange = (event) => { 
         const value = event.target.value;
         setSelectedColorTheme(value);
         colorThemeRHFOnChange(event);

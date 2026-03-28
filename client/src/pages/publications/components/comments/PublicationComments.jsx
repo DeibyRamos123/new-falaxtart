@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
+import { useState } from 'react'
 import { useAuth } from '../../../../hooks/useAuth'
 import '../../../../styles/comments.css'
 import useComments from '../../../../hooks/useComments';
@@ -14,6 +15,8 @@ export default function PublicationComments({ user_avatar, publicationUser }) {
     const params = useParams();
 
     const {register, comment, loadingComment, onSubmitComment} = useComments(params);
+
+    const [visibleComments, setVisibleComments] = useState(6); // definimos un estado para limitar los comentarios a 7
 
     // const userCommentAvatar = ;
     console.log(comment);
@@ -54,20 +57,40 @@ export default function PublicationComments({ user_avatar, publicationUser }) {
                         />
                         <button className='publication-comment-box__btn'>send</button>
                     </form>
-
+                    
                     <section className='publication-user-comments'>
-                        {comment && comment.map(comentario => (
+                        <p className='comments-count'>{comment.length > 0 ? `${comment.length} comments` : 'there is no comments yet'}</p>
+                        {comment && comment.slice(0, visibleComments).map(comentario => (
                             comentario?.usuario && (
                                 <Comment 
                                     key={comentario.id}
                                     userAvatar={`http://localhost:8000/${comentario.usuario.avatar}`}
-                                    username={comentario.usuario.username}
+                                    username={comentario.usuario.first_name}
                                     comment={comentario.contenido}
                                     colorTheme={comentario.usuario.color_theme}
                                     userID={comentario.usuario.id}
                                 />
                             )
                         ))}
+
+
+                        {/* boton para ver todos los comentarios */}
+
+                        { comment.length > visibleComments && (
+
+                            /*actualizo el estado el botón para cuando se haga click muestre el numero de comenatarios 
+                            importante  poner la arrow fn porque si no ejecuta la función directamente y pone todos los comentarios
+                            con la arrow funcion se le dice que primero se le tiene que dar click para ejecutar la función
+                            */
+
+                            <button onClick={() => setVisibleComments(prevC => prevC + 8)}
+                            className='publication-user-comments__view-more'
+                            > 
+                                ver todos los comentarios
+                            </button>
+                        )
+                        }
+
                     </section>
                 </section>
             </section>
