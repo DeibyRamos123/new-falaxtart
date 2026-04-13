@@ -44,3 +44,17 @@ def create_comment(request):
         serializer.save(usuario=request.user)
         return Response({'Comment':serializer.data}, status=status.HTTP_200_OK)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['DELETE'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def delete_comment(request, id):
+    comment =  get_object_or_404(Comment, id=id)
+
+    if comment.user == request.user:
+        comment.delete() # eliminamos directamente
+    else:
+        return Response({'message': 'No cuentas con los permisos para realizar esta acción'}, status=403)
+
+    return Response({"message": "Comentario eliminado correctamente"}, status=204)
