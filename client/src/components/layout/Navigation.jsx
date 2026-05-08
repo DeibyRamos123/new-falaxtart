@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form';
 import { createUsuario, homeUsuario, loginUsuario } from '../../services/usuarios.api';
 import { ProfileMenu } from '../ui/ProfileMenu';
 import { useAuth } from '../../hooks/useAuth';
+import { BACKEND_URL } from '../../services/config';
 
 export function Navigation() {
 
@@ -40,7 +41,7 @@ export function Navigation() {
   let imagen = 'https://i.pinimg.com/736x/c9/23/cf/c923cfe92ff14e0953c694f3f3df022a.jpg';
 
   if (user?.avatar) {
-    imagen = `http://127.0.0.1:8000/${user.avatar}`;
+    imagen = `${BACKEND_URL}/${user.avatar}`;
   }
 
 

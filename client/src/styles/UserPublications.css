@@ -3,6 +3,7 @@
     flex-direction: column;
     gap:5px;
 }
+
 .publication__body {
     width: 200px;
     height: 200px;

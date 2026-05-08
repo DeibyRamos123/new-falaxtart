@@ -4,6 +4,7 @@ import { PublicationCard } from './components/publications/PublicationCard';
 import '../../styles/Home.css';
 import '../../styles/loading.css';
 import cargando from '../../assets/loading.gif';
+import { BACKEND_URL } from '../../services/config';
 
 export function Home() {
   const [publications, setPublications] = useState([]);
@@ -42,9 +43,9 @@ export function Home() {
         <PublicationCard
           key={publication.id}
           title={publication.title}
-          content={`http://localhost:8000/${publication.content}`}
+          content={`${BACKEND_URL}/${publication.content}`}
           username={publication.usuario.username}
-          avatar={`http://localhost:8000/${publication.usuario.avatar}`}
+          avatar={`${BACKEND_URL}/${publication.usuario.avatar}`}
           usuarioId={publication.usuario.id}
           publicationId={publication.id}
           platform={publication.platform_publication}

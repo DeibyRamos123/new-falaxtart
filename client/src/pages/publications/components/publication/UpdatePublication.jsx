@@ -7,6 +7,7 @@ import { useIsDifferentUser } from '../../../../hooks/useIsDifferentUser';
 import usePublicationData from '../../../../hooks/usePublicationData';
 import PublicationButtons from './PublicationButtons';
 import PublicationComments from '../comments/PublicationComments';
+import { BACKEND_URL } from '../../../../services/config';
 
 export function UpdatePublication() {
     const params = useParams();
@@ -23,7 +24,7 @@ export function UpdatePublication() {
         )
     }
 
-    const user_avatar = `http://localhost:8000/${publicationUser.avatar}`;
+    const user_avatar = `${BACKEND_URL}/${publicationUser.avatar}`;
 
 
     return (
@@ -31,7 +32,7 @@ export function UpdatePublication() {
             <div className="publication">
                 <div className="publication-image-container">
                     <img 
-                    src={`http://localhost:8000/${publication.content}`} 
+                    src={`${BACKEND_URL}/${publication.content}`} 
                     alt={publication.title} 
                     className="publication-image-container__publication-img" 
                     />

@@ -2,11 +2,8 @@ import React from 'react'
 import { useAuth } from '../../../../hooks/useAuth'
 import useFollows from '../../../../hooks/useFollows';
 
-export function ProfileButtons({ currentUser, onClick, params, handleFollow, siguiendo, handleUnfollow, isLoading, accessToken }) {
+export function ProfileButtons({ currentUser, onClick, params, handleFollow, siguiendo, handleUnfollow, isLoading, accessToken, borderCondition }) {
 
-    
-
-    
 
     if (isLoading && accessToken) {
         return (
@@ -23,7 +20,8 @@ export function ProfileButtons({ currentUser, onClick, params, handleFollow, sig
         return (
             <div>
                 <button 
-                    className="profile-info__user-edit-profile-btn" 
+                    className="profile-info__user-edit-profile-btn"
+                    style={borderCondition}
                     onClick={onClick}
                 >
                     Editar perfil
@@ -37,7 +35,8 @@ export function ProfileButtons({ currentUser, onClick, params, handleFollow, sig
         return (
             <div>
                 <button 
-                    className="profile-info__user-edit-profile-btn" 
+                    className="profile-info__user-edit-profile-btn"
+                    style={borderCondition}
                     disabled
                 >
                     Seguir
@@ -53,7 +52,8 @@ export function ProfileButtons({ currentUser, onClick, params, handleFollow, sig
         return (
             <div>
                 <button 
-                    className="profile-info__user-edit-profile-btn" 
+                    className="profile-info__user-edit-profile-btn"
+                    style={borderCondition} 
                     onClick={handleUnfollow} // 🛑 Necesitas crear esta función para DELETE
                 >
                     Dejar de seguir
@@ -64,9 +64,11 @@ export function ProfileButtons({ currentUser, onClick, params, handleFollow, sig
     
     // 4. Si NO está siguiendo, muestra 'Seguir'.
     return (
+        
         <div>
             <button 
                 className="profile-info__user-edit-profile-btn" 
+                style={borderCondition}
                 onClick={handleFollow} // Esta función debe hacer el POST
             >
                 Seguir

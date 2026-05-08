@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-$ef)m0r*m)e39=fg*-7scby7y3!efgl95qo=3l!xf6bjit9w)@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -146,7 +146,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 #cors autorization
-CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "http://192.168.1.39:5173"
+]
 
 
 REST_FRAMEWORK = {

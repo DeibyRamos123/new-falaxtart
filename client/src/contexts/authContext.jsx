@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
+import { BACKEND_URL } from "../services/config";
 
 
 export const AuthContext = createContext();
@@ -17,7 +18,7 @@ export function AuthProvider({ children }) {
         const token = localStorage.getItem('access_token')
 
         if (token) {
-            axios.get('http://localhost:8000/falaxart/api/users/v1/me/', {
+            axios.get(`${BACKEND_URL}/falaxart/api/users/v1/me/`, {
                 headers: { Authorization: `Token ${token}` }
             }).then(res => {
                 setUser(res.data);
@@ -48,7 +49,7 @@ export function AuthProvider({ children }) {
         const token = localStorage.getItem('access_token');
         if (!token) {
             try {
-                res = await axios.get('http://localhost:8000/falaxart/api/users/v1/me/', {
+                res = await axios.get(`${BACKEND_URL}/falaxart/api/users/v1/me/`, {
                     headers: { Authorization: `Token ${token}` }
                 });
                 setUser(res.data);

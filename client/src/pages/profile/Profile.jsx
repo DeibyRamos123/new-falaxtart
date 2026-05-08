@@ -8,6 +8,7 @@ import { Link, useParams } from 'react-router-dom';
 import cargando from '../../assets/loading.gif';
 import { useProfileData } from '../../hooks/useProfileData';
 import { useIsDifferentUser } from '../../hooks/useIsDifferentUser';
+import { BACKEND_URL } from '../../services/config';
 
 export function Profile() {
     const { id } = useParams();
@@ -27,8 +28,17 @@ export function Profile() {
     }
     
 
-    const profileImg = usuario?.avatar ? `http://127.0.0.1:8000/${usuario.avatar}` : null;
-    const coverImg = usuario?.cover ? `http://127.0.0.1:8000/${usuario.cover}` : null;
+    const profileImg = usuario?.avatar ? `${BACKEND_URL}/${usuario.avatar}` : null;
+    const coverImg = usuario?.cover ? `${BACKEND_URL}/${usuario.cover}` : null;
+
+    const hexToRgba = (hex, opacity) => {
+      let r = parseInt(hex.slice(1, 3), 16);
+      let g = parseInt(hex.slice(3, 5), 16);
+      let b = parseInt(hex.slice(5, 7), 16);
+      return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+    };
+
+    const glowColor = hexToRgba(usuario.background_divs, 0.3);
 
     return (
     <>
@@ -45,19 +55,27 @@ export function Profile() {
           colorTheme={usuario.color_theme}
           bgTheme={usuario.background}
           bgDivsTheme={usuario.background_divs}
+          glowColor={glowColor}
           params={id}
         />
       </section>
 
       <section 
       className="publications-section"
-      style={{backgroundImage: `linear-gradient(to bottom, ${usuario.background_divs} 58%, ${usuario.background} 92%)`}}
+      style={{backgroundImage: `
+        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        linear-gradient(to bottom, ${usuario.background_divs} 58%, ${usuario.background} 92%)
+        `,
+        backgroundAttachment: 'fixed',
+        border: `1px solid ${usuario.background_divs}`,
+        boxShadow: `0 0 20px ${glowColor}`,
+      }}
        >
         {publicaciones.length > 0 ? (
           publicaciones.map(publicacion => (
             <Link to={`/update-publication/${publicacion.id}`} className='publication-link' key={publicacion.id}>
               <UserPublications
-                content={`http://127.0.0.1:8000/${publicacion.content}`}
+                content={`${BACKEND_URL}/${publicacion.content}`}
                 title={publicacion.title}
                 avatar={profileImg}
                 platform={publicacion.platform_publication}
