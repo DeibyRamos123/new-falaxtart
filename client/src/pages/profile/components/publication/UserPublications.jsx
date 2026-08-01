@@ -33,10 +33,10 @@ export function UserPublications({avatar, title, content, platform, tag, usernam
         
         <div className="publication__footer">
             <div className="user-information">
-                  <img src={avatar} alt={username} className='user-information__img' style={{ borderColor: `${colorTheme}` }}/>
                 <div className='publication__footer-text-context'>
                   <div className='publication-home__footer__tags'>
-                    <p className={`publication-home__footer__tags-plat ${
+                    <img src={avatar} alt={username} className='user-information__img' style={{ borderColor: `${colorTheme}` }}/>
+                    <p className={`publication-home__footer__tags--plat ${
                     platform === 'playstation' 
                     ? 'bg-blue'
                     : platform === 'xbox'

@@ -17,7 +17,7 @@ def upload_publication(request):
 @api_view(['GET'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
-def my_publications(request, id):
+def user_profile_publications(request, id):
     publication = Publication.objects.filter(usuario=id)
 
     serializador = PublicationSerializer(publication, many=True)
