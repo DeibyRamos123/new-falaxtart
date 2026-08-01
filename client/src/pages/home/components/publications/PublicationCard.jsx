@@ -1,5 +1,6 @@
 import React from 'react'
 import '../../../../styles/PublicationCard.css';
+import '../../../../styles/common.css';
 import { Link, useNavigate} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlaystation, faXbox, faSteam } from '@fortawesome/free-brands-svg-icons'
