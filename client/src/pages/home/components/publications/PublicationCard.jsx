@@ -1,3 +1,6 @@
+
+// Tarjetas de publicaciones de HOME
+
 import React from 'react'
 import '../../../../styles/PublicationCard.css';
 import '../../../../styles/common.css';
@@ -5,27 +8,12 @@ import { Link, useNavigate} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlaystation, faXbox, faSteam } from '@fortawesome/free-brands-svg-icons'
 import { faGamepad, faMobileScreen } from '@fortawesome/free-solid-svg-icons'
+import { getPlatformColor, getPlatformIcon } from '../../../../utils/platform';
 
 export function PublicationCard({title, avatar, content, username, usuarioId, publicationId, tag, platform, colorTheme}) {
 
   const navigate = useNavigate();
 
-  const getPlatformIcon = (platform) => {
-    switch (platform) {
-      case 'playstation':
-        return faPlaystation
-      case 'xbox':
-        return faXbox
-      case 'nintendo':
-        return faGamepad
-      case 'pc':
-        return faSteam
-      case 'mobile':
-        return faMobileScreen
-      default:
-        return null
-    }
-  }
   return (
  <div className='publication-link' onClick={() => navigate(`/update-publication/${publicationId}`)}>
   <div className="publication-home">
@@ -40,19 +28,7 @@ export function PublicationCard({title, avatar, content, username, usuarioId, pu
         </Link>
         <div className='publication-home__footer-text-context'>
           <div className='publication-home__footer__tags'>
-            <p className={`publication-home__footer__tags-plat ${
-              platform === 'playstation'
-                ? 'bg-blue'
-                : platform === 'xbox'
-                ? 'bg-green'
-                : platform === 'nintendo'
-                ? 'bg-red'
-                : platform === 'pc'
-                ? 'bg-purple'
-                : platform === 'mobile'
-                ? 'bg-orange'
-                : ''
-            }`}>
+            <p className={`publication-home__footer__tags-plat ${getPlatformColor(platform)}`}>
               <FontAwesomeIcon icon={getPlatformIcon(platform)} style={{ marginRight: 2 }} />
               {platform}
             </p>
