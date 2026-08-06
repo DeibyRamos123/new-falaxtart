@@ -3,7 +3,7 @@ import { profileUsuario } from '../../services/usuarios.api'
 import { loadUserPublications } from '../../services/publications.api';
 import { ProfileCard } from './components/profilecards/ProfileCard';
 import '../../styles/ProfilePage.css'
-import { UserPublications } from './components/publication/UserPublications';
+import { PublicationCard } from '../publications/PublicationCard';
 import { Link, useParams } from 'react-router-dom';
 import cargando from '../../assets/loading.gif';
 import { useProfileData } from '../../hooks/useProfileData';
@@ -74,13 +74,15 @@ export function Profile() {
         {publicaciones.length > 0 ? (
           publicaciones.map(publicacion => (
             <Link to={`/update-publication/${publicacion.id}`} className='publication-link' key={publicacion.id}>
-              <UserPublications
-                content={`${BACKEND_URL}/${publicacion.content}`}
-                title={publicacion.title}
-                avatar={profileImg}
-                platform={publicacion.platform_publication}
-                tag={publicacion.tag2}
-                colorTheme={publicacion.usuario.color_theme}
+              <PublicationCard
+                  variant="profile"
+                  content={`${BACKEND_URL}/${publicacion.content}`}
+                  title={publicacion.title}
+                  avatar={profileImg}
+                  username={usuario.username}
+                  platform={publicacion.platform_publication}
+                  tag={publicacion.tag2}
+                  colorTheme={publicacion.usuario.color_theme}
               />
             </Link>
           ))

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { ObtainPublications } from '../../services/publications.api';
-import { PublicationCard } from './components/publications/PublicationCard';
+import { PublicationCard } from '../publications/PublicationCard';
 import '../../styles/Home.css';
 import '../../styles/loading.css';
 import cargando from '../../assets/loading.gif';
@@ -42,6 +42,7 @@ export function Home() {
       {publications.map(publication => (
         <PublicationCard
           key={publication.id}
+          variant="feed"
           title={publication.title}
           content={`${BACKEND_URL}/${publication.content}`}
           username={publication.usuario.username}
