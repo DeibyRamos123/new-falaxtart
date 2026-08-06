@@ -1,13 +1,10 @@
-
 // Tarjetas de publicaciones de HOME
 
 import React from 'react'
 import '../../../../styles/PublicationCard.css';
 import '../../../../styles/common.css';
 import { Link, useNavigate} from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlaystation, faXbox, faSteam } from '@fortawesome/free-brands-svg-icons'
-import { faGamepad, faMobileScreen } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getPlatformColor, getPlatformIcon } from '../../../../utils/platform';
 
 export function PublicationCard({title, avatar, content, username, usuarioId, publicationId, tag, platform, colorTheme}) {

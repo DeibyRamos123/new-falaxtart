@@ -13,30 +13,6 @@
     cursor: pointer;
 }
 
-.publication-home__footer__tags {
-    display: flex;
-    gap: 6px;
-    margin-top: 8px;
-}
-
-.publication-home__footer__tags-plat,
-.publication-home__footer__tags-cat {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 4px 10px;
-    min-height: 24px;
-
-    border-radius: 999px;
-
-    font-size: .75rem;
-    font-weight: 600;
-
-    white-space: nowrap;
-}
-
-
 
 .publication-home:hover {
     transform: scale(1.05);
