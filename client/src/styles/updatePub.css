@@ -11,7 +11,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
 }
 
 .publication-image-container {
@@ -46,6 +46,39 @@
     border-radius: 3px;
     margin-bottom: 10px;
 }
+
+.publication-user__temp {
+    width: 100%;
+    background-color: #333;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.publication-user-section__avatar__temp{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.user__avatar__temp {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-first-name__temp {
+    font-size: 1.1rem;
+}
+
+.user-username__temp {
+    font-size: 0.8rem;
+}
+
+
 
 
 

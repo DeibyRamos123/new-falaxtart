@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export function PublicationUserInformation({ userAvatar, publicationUser }) {
+export function PublicationUserInformation({ userAvatar, publicationUser, createdAt }) {
 
     return (
         <div className="publication-user__temp">
