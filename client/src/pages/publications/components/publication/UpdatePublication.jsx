@@ -27,9 +27,6 @@ export function UpdatePublication() {
 
     const user_avatar = `${BACKEND_URL}/${publicationUser.avatar}`;
 
-    console.log(`Publicacion: ${publication.title}`)
-
-
     return (
         <section className="publication-section">
             <div className="publication">
@@ -41,19 +38,22 @@ export function UpdatePublication() {
                     />
                 </div>
 
-                <PublicationUserInformation 
-                userAvatar={user_avatar}
-                publicationUser={publicationUser}
+                <PublicationUserInformation
+                    userAvatar={user_avatar}
+                    publicationUser={publicationUser}
+                    createdAt={publication.created_at}
                 />
-                
+
                 <div className="publication-text-context">
-                    <p className='publication-title__label' style={{display: 'none'}}> title</p>
-                    <h2 className='publication-title'>{publication.title}</h2>
-                    <p className='publication-title__label' style={{display: 'none'}}>Description </p>
+                    <p className='publication-title__label' style={{ display: 'none' }}> title</p>
+                    <div className="publication-title-button">
+                        <h2 className='publication-title'>{publication.title}</h2>
+                        <PublicationButtons
+                            isDifferentUser={isDifferentUser}
+                        />
+                    </div>
+                    <p className='publication-title__label' style={{ display: 'none' }}>Description </p>
                     <p className='publication-description'>{publication.description}</p>
-                    <PublicationButtons
-                        isDifferentUser={isDifferentUser}
-                    />
                 </div>
             </div>
 

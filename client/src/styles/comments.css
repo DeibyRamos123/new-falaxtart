@@ -4,7 +4,7 @@
     padding: 20px;
     border-radius: 12px;
     width: 555px;
-    max-height: 705px; /* Solo crece hasta aquí */
+    max-height: 725px; /* Solo crece hasta aquí */
     height: auto;      /* Se ajusta al contenido */
     display: block;
     overflow-y: auto;

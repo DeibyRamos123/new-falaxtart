@@ -41,10 +41,13 @@
 }
 
 .publication-description {
-    padding: 10px;
-    background-color: #222;
     border-radius: 3px;
     margin-bottom: 10px;
+}
+
+.publication-title-button {
+    display: flex;
+    justify-content: space-between;
 }
 
 .publication-user__temp {
@@ -72,10 +75,16 @@
 
 .user-first-name__temp {
     font-size: 1.1rem;
+    font-weight: 400;
 }
 
 .user-username__temp {
     font-size: 0.8rem;
+}
+
+.publication-creation-date {
+    font-size: 0.8rem;
+    color: #BDBDBD;
 }
 
 

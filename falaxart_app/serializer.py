@@ -34,6 +34,7 @@ class PublicationSerializer(serializers.ModelSerializer):
                   'title',
                   'content',
                   'description',
+                  'created_at',
                   'for_sale',
                   'platform_publication',
                   'tag2'

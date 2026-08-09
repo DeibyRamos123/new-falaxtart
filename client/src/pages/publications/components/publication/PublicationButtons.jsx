@@ -7,7 +7,7 @@ export default function PublicationButtons({ isDifferentUser }) {
         ""
       ) : (
         <button className="profile-info__user-edit-profile-btn">
-          Editar publicacion
+          Edit
         </button>
       )}
     </div>
