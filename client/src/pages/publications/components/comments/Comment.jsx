@@ -2,8 +2,9 @@ import React from 'react'
 import '../../../../styles/comments.css'
 import { Link } from 'react-router-dom'
 import { ReadMore } from '../../../../components/ReadMore'
+import { getTimeAgo } from '../../../../utils/platform'
 
-export default function Comment({userAvatar, username, comment, userID, colorTheme}) {
+export default function Comment({userAvatar, username, comment, userID, colorTheme, createdAt}) {
   return (
     <div className='user-comment'>
         <Link to={`/profile/${userID}`}>
@@ -18,9 +19,21 @@ export default function Comment({userAvatar, username, comment, userID, colorThe
         </Link>
 
         <div className='user-comment__text-comment'>
-            <Link to={`/profile/${userID}`}>
-                <span className="user-comment__username" style={{color: colorTheme}}>{username}</span>
-            </Link>
+            <div className="user-comment__meta">
+                <Link to={`/profile/${userID}`}>
+                    <span
+                        className="user-comment__username"
+                        style={{ color: colorTheme }}
+                    >
+                        {username}
+                    </span>
+                </Link>
+
+                <span className="user-comment__created">
+                    {getTimeAgo(createdAt)}
+                </span>
+            </div>
+
             <ReadMore comment={comment} />
         </div>
     </div>

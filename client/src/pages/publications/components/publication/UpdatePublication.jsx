@@ -8,6 +8,7 @@ import usePublicationData from '../../../../hooks/usePublicationData';
 import PublicationButtons from './PublicationButtons';
 import PublicationComments from '../comments/PublicationComments';
 import { BACKEND_URL } from '../../../../services/config';
+import { PublicationUserInformation } from './PublicationUserInformation';
 
 export function UpdatePublication() {
     const params = useParams();
@@ -16,7 +17,7 @@ export function UpdatePublication() {
     const isDifferentUser = useIsDifferentUser(publicationUser?.id);
 
 
-    if ( loadingPublication || isDifferentUser === null ) {
+    if (loadingPublication || isDifferentUser === null) {
         return (
             <div className="loading-screen">
                 <img src={cargando} className="loading-screen__spinner" alt="loading..." />
@@ -26,31 +27,39 @@ export function UpdatePublication() {
 
     const user_avatar = `${BACKEND_URL}/${publicationUser.avatar}`;
 
+    console.log(`Publicacion: ${publication.title}`)
+
 
     return (
         <section className="publication-section">
             <div className="publication">
                 <div className="publication-image-container">
-                    <img 
-                    src={`${BACKEND_URL}/${publication.content}`} 
-                    alt={publication.title} 
-                    className="publication-image-container__publication-img" 
+                    <img
+                        src={`${BACKEND_URL}/${publication.content}`}
+                        alt={publication.title}
+                        className="publication-image-container__publication-img"
                     />
                 </div>
+
+                <PublicationUserInformation 
+                userAvatar={user_avatar}
+                publicationUser={publicationUser}
+                />
+                
                 <div className="publication-text-context">
-                    <p className='publication-title__label'> title</p>
+                    <p className='publication-title__label' style={{display: 'none'}}> title</p>
                     <h2 className='publication-title'>{publication.title}</h2>
-                    <p className='publication-title__label'>Description </p>
+                    <p className='publication-title__label' style={{display: 'none'}}>Description </p>
                     <p className='publication-description'>{publication.description}</p>
                     <PublicationButtons
-                    isDifferentUser={isDifferentUser}
+                        isDifferentUser={isDifferentUser}
                     />
                 </div>
             </div>
 
             <PublicationComments
-            user_avatar={user_avatar}
-            publicationUser={publicationUser}
+                user_avatar={user_avatar}
+                publicationUser={publicationUser}
             />
 
         </section>

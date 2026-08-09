@@ -7,6 +7,7 @@ import useComments from '../../../../hooks/useComments';
 import Comment from './Comment';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons"
+import CommentsToggle from './CommentsToggle'
 
 export default function PublicationComments({ user_avatar, publicationUser }) {
 
@@ -21,7 +22,6 @@ export default function PublicationComments({ user_avatar, publicationUser }) {
     const [visibleComments, setVisibleComments] = useState(6); // definimos un estado para limitar los comentarios a 7
 
     // const userCommentAvatar = ;
-    console.log(comment);
 
 
     return (
@@ -71,6 +71,7 @@ export default function PublicationComments({ user_avatar, publicationUser }) {
                                     comment={comentario.contenido}
                                     colorTheme={comentario.usuario.color_theme}
                                     userID={comentario.usuario.id}
+                                    createdAt={comentario.created_at}
                                 />
                             )
                         ))}
@@ -80,41 +81,18 @@ export default function PublicationComments({ user_avatar, publicationUser }) {
 
                         { comment.length > 6 && ( // si la longitud del array de comentarios es mayor a 6 mostramos el boton
 
-                            /*actualizo el estado el botón para cuando se haga click muestre el numero de comenatarios 
-                            importante  poner la arrow fn porque si no ejecuta la función directamente y pone todos los comentarios
-                            con la arrow funcion se le dice que primero se le tiene que dar click para ejecutar la función
-                            */
-
-                            <button onClick={() => {
-                                if (visibleComments >= comment.length) { // si los comentarios son iguales o mayores a longitud del array los limitamos a 6
-                                    setVisibleComments(6);
-                                } else { // si no ponemos visibles todos los comentarios igualando la limitacion a la longitud del array
-                                    setVisibleComments(comment.length);
-                                } 
-                            }}
-
-                            className='publication-user-comments__view-more'
-                            > 
-                                {visibleComments >= comment.length
-                                    ? 'Close comments'
-                                    : 'Open comments'
-                                }
-
-                                <FontAwesomeIcon
-                                    icon={faChevronDown}
-                                    style={{
-                                        marginLeft: 6,
-                                        transform: visibleComments >= comment.length
-                                            ? 'rotate(180deg)'
-                                            : 'rotate(0deg)',
-                                        transition: 'transform 0.2s ease'
-                                    }}
-                                />
-
-                            </button>
+                            <CommentsToggle
+                                expanded={visibleComments >= comment.length}
+                                onToggle={() => {
+                                    if (visibleComments >= comment.length) { // si los comentarios son iguales o mayores a longitud del array los limitamos a 6
+                                        setVisibleComments(6);
+                                    } else { // si no ponemos visibles todos los comentarios igualando la limitacion a la longitud del array
+                                        setVisibleComments(comment.length);
+                                    }
+                                }}
+                            />
                         )
                         }
-
                     </section>
                 </section>
             </section>
