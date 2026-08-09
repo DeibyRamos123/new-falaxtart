@@ -15,24 +15,24 @@
 }
 
 .publication-image-container {
-    width: 500px;
+    width: 800px;
     height: 500px;
     background-color: #333;
-    border-radius: 3px;
+    border-radius: 12px;
 }
 
 .publication-image-container__publication-img{
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-radius: 3px;
+    object-fit: contain;
+    border-radius: 12px;
 }
 
 .publication-text-context {
     background-color: #333;
     width: 100%;
     padding: 20px;
-    border-radius: 3px;
+    border-radius: 12px;
 }
 
 .publication-title__label {

@@ -5,6 +5,8 @@ import { useAuth } from '../../../../hooks/useAuth'
 import '../../../../styles/comments.css'
 import useComments from '../../../../hooks/useComments';
 import Comment from './Comment';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons"
 
 export default function PublicationComments({ user_avatar, publicationUser }) {
 
@@ -52,7 +54,7 @@ export default function PublicationComments({ user_avatar, publicationUser }) {
                         <input 
                         type="text" 
                         className='publication-comment-box__input' 
-                        placeholder='Enter text here'
+                        placeholder='Write a comment...'
                         {...register('contenido')}
                         />
                         <button className='publication-comment-box__btn'>send</button>
@@ -76,17 +78,39 @@ export default function PublicationComments({ user_avatar, publicationUser }) {
 
                         {/* boton para ver todos los comentarios */}
 
-                        { comment.length > visibleComments && (
+                        { comment.length > 6 && ( // si la longitud del array de comentarios es mayor a 6 mostramos el boton
 
                             /*actualizo el estado el botón para cuando se haga click muestre el numero de comenatarios 
                             importante  poner la arrow fn porque si no ejecuta la función directamente y pone todos los comentarios
                             con la arrow funcion se le dice que primero se le tiene que dar click para ejecutar la función
                             */
 
-                            <button onClick={() => setVisibleComments(prevC => prevC + 8)}
+                            <button onClick={() => {
+                                if (visibleComments >= comment.length) { // si los comentarios son iguales o mayores a longitud del array los limitamos a 6
+                                    setVisibleComments(6);
+                                } else { // si no ponemos visibles todos los comentarios igualando la limitacion a la longitud del array
+                                    setVisibleComments(comment.length);
+                                } 
+                            }}
+
                             className='publication-user-comments__view-more'
                             > 
-                                ver todos los comentarios
+                                {visibleComments >= comment.length
+                                    ? 'Close comments'
+                                    : 'Open comments'
+                                }
+
+                                <FontAwesomeIcon
+                                    icon={faChevronDown}
+                                    style={{
+                                        marginLeft: 6,
+                                        transform: visibleComments >= comment.length
+                                            ? 'rotate(180deg)'
+                                            : 'rotate(0deg)',
+                                        transition: 'transform 0.2s ease'
+                                    }}
+                                />
+
                             </button>
                         )
                         }
